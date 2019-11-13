@@ -1,0 +1,8 @@
+import string
+letters= string.ascii_lowercase
+def getAvailableLetters(lettersGuessed):
+    out=[]
+    for x in letters:
+        if x in lettersGuessed:
+            out.remove(x)
+    return ''.join(out)
