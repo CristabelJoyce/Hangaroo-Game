@@ -1,0 +1,30 @@
+def Hangaroo(secretWord):
+    print("HANGAROO!")
+    print("The word is ", len(secretWord), "letters long.")
+    mistakesMade= 0
+    lettersGuessed= []
+    while 10-mistakesMade>0:
+        if isWordGuessed(secretWord,lettersGuessed)==True:
+            print("---------")
+            print("You Won!")
+            break
+        else:
+        	print("---------")
+        	print("You only have", 10 - mistakesMade, "guesses left.")
+        	print("The available letters:", getAvailableLetters(lettersGuessed))
+        	letter= str(input("Guess a letter:")).lower()
+        if letter in secretWord and letter not in lettersGuessed:
+        		lettersGuessed.append(letter)
+        		print("Good guess:", getGuessedWord(secretWord, lettersGuessed))
+        elif letter in lettersGuessed:
+        		print("You've already guessed that letter:", getGuessedWord(secretWord, lettersGuessed))
+        elif letter not in secretWord:
+        		print("That letter is not in the word:", getGuessedWord(secretWord, lettersGuessed))
+        		lettersGuessed.append(letter)
+        		mistakesMade += 1
+        if 10 - mistakesMade == 0:
+        	print("---------")
+        	print("You Lose. The word is ", secretWord)
+        	break
+        else:
+        	continue
